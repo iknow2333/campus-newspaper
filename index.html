@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Campus Daily - Complete Newspaper Project</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -39,7 +42,7 @@
             color: white;
             padding: 18px 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .nav-content {
@@ -68,7 +71,7 @@
 
         .nav-btn {
             background: transparent;
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
             color: white;
             padding: 10px 22px;
             cursor: pointer;
@@ -106,9 +109,9 @@
             max-width: 1400px;
             margin: 0 auto;
             background: var(--paper);
-            box-shadow: 
-                0 0 0 1px rgba(0,0,0,0.05),
-                0 15px 60px rgba(0,0,0,0.15);
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.05),
+                0 15px 60px rgba(0, 0, 0, 0.15);
             animation: pageSlide 0.6s ease-out;
         }
 
@@ -121,6 +124,7 @@
                 opacity: 0;
                 transform: translateY(40px) scale(0.98);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -131,9 +135,9 @@
         .newspaper-header {
             border-bottom: 5px double var(--ink);
             padding: 50px 50px 30px;
-            background: 
+            background:
                 linear-gradient(180deg, rgba(212, 175, 55, 0.04) 0%, transparent 100%),
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 3px);
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.015) 3px);
             position: relative;
         }
 
@@ -186,7 +190,7 @@
             font-family: 'Lato', sans-serif;
             font-size: 12px;
             padding-top: 20px;
-            border-top: 1px solid rgba(0,0,0,0.15);
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -322,7 +326,7 @@
             text-align: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .stats-title {
@@ -347,15 +351,15 @@
         .stat-item {
             text-align: center;
             padding: 25px;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .stat-item:hover {
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
         }
 
         .stat-number {
@@ -415,7 +419,7 @@
             padding: 35px;
             border-radius: 10px;
             margin: 35px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--light-gray);
         }
 
@@ -461,7 +465,7 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .bar-fill {
@@ -481,7 +485,9 @@
         }
 
         @keyframes barGrow {
-            from { width: 0; }
+            from {
+                width: 0;
+            }
         }
 
         /* Two Column Layout */
@@ -497,14 +503,14 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border-top: 5px solid var(--primary-red);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
 
         .card-icon {
@@ -595,7 +601,7 @@
             font-weight: 700;
             font-family: 'Lato', sans-serif;
             border: 4px solid white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
         }
 
         /* Continued Reading */
@@ -626,29 +632,19 @@
             letter-spacing: 1px;
         }
 
-        /* Presentation Helper */
-        .presentation-guide {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary-red);
-            color: white;
-            padding: 18px 30px;
-            border-radius: 50px;
-            font-family: 'Lato', sans-serif;
-            font-size: 14px;
-            font-weight: 900;
-            box-shadow: 0 6px 25px rgba(196, 30, 58, 0.5);
-            cursor: pointer;
-            animation: pulse 2.5s ease-in-out infinite;
-            z-index: 999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(196, 30, 58, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 35px rgba(196, 30, 58, 0.7); }
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 25px rgba(196, 30, 58, 0.5);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 35px rgba(196, 30, 58, 0.7);
+            }
         }
 
         /* Responsive Design */
@@ -656,15 +652,19 @@
             .newspaper-title {
                 font-size: 52px;
             }
+
             .two-column {
                 grid-template-columns: 1fr;
             }
+
             .page-content {
                 padding: 35px;
             }
+
             .newspaper-header {
                 padding: 35px 35px 25px;
             }
+
             .nav-content {
                 padding: 0 20px;
             }
@@ -672,16 +672,17 @@
 
         /* Print Styles */
         @media print {
-            .navigation, .presentation-guide {
-                display: none;
-            }
+
+            .navigation,
             .page-container {
                 margin-top: 0;
                 padding: 0;
             }
+
             body {
                 background: white;
             }
+
             .page {
                 box-shadow: none;
                 page-break-after: always;
@@ -689,6 +690,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navigation">
@@ -705,7 +707,7 @@
     </nav>
 
     <div class="page-container">
-        
+
         <!-- ==================== PAGE 1: FRONT PAGE (Member 1) ==================== -->
         <div class="page active" id="page1">
             <div class="newspaper-header">
@@ -728,7 +730,8 @@
 
                 <article class="article">
                     <h3 class="article-headline">One-Third of Students Now Get Campus News Online</h3>
-                    <p class="article-subheadline">Digital platforms have transformed from novelty to necessity in just ten years</p>
+                    <p class="article-subheadline">Digital platforms have transformed from novelty to necessity in just
+                        ten years</p>
                     <div class="article-meta">
                         <span>By <span class="byline">Sarah Chen</span>, Staff Reporter</span>
                         <span>|</span>
@@ -737,10 +740,23 @@
                         <span>Based on Pew Research Center Study</span>
                     </div>
                     <div class="article-text">
-                        <p>A decade ago, just one-in-fifty students at our university got campus news with some regularity from what was then a brand new source—social media and online platforms. Today, nearly one-in-three students regularly get news online about campus events, announcements, and activities.</p>
-                        <p>The comprehensive survey, conducted by the Student Affairs Office in collaboration with the School of Communications, reveals a dramatic shift in how our campus community consumes information. The study surveyed 3,204 students from April 27 to May 22, making it one of the most extensive investigations into student media habits ever conducted at our institution.</p>
-                        <p>"This represents a fundamental transformation in campus communication," said Dr. Jennifer Martinez, Professor of Media Studies. "What began as an experiment with digital bulletin boards has evolved into the primary information channel for a significant portion of our student body."</p>
-                        <p>The growth of online news consumption has particularly accelerated since 2020, when the pandemic forced many traditional campus activities and information channels to move online. However, researchers note that the growth rate has slowed considerably since 2023, suggesting the market may be reaching saturation.</p>
+                        <p>A decade ago, just one-in-fifty students at our university got campus news with some
+                            regularity from what was then a brand new source—social media and online platforms. Today,
+                            nearly one-in-three students regularly get news online about campus events, announcements,
+                            and activities.</p>
+                        <p>The comprehensive survey, conducted by the Student Affairs Office in collaboration with the
+                            School of Communications, reveals a dramatic shift in how our campus community consumes
+                            information. The study surveyed 3,204 students from April 27 to May 22, making it one of the
+                            most extensive investigations into student media habits ever conducted at our institution.
+                        </p>
+                        <p>"This represents a fundamental transformation in campus communication," said Dr. Jennifer
+                            Martinez, Professor of Media Studies. "What began as an experiment with digital bulletin
+                            boards has evolved into the primary information channel for a significant portion of our
+                            student body."</p>
+                        <p>The growth of online news consumption has particularly accelerated since 2020, when the
+                            pandemic forced many traditional campus activities and information channels to move online.
+                            However, researchers note that the growth rate has slowed considerably since 2023,
+                            suggesting the market may be reaching saturation.</p>
                     </div>
                 </article>
 
@@ -771,21 +787,31 @@
 
                 <article class="article">
                     <h3 class="article-headline">Traditional Campus Newspaper Fights Back With Digital Edition</h3>
-                    <p class="article-subheadline">Online version helps stem readership decline, but challenges remain</p>
+                    <p class="article-subheadline">Online version helps stem readership decline, but challenges remain
+                    </p>
                     <div class="article-meta">
                         <span>By <span class="byline">Michael Torres</span>, News Editor</span>
                         <span>|</span>
                         <span>December 27, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>While social media platforms continue their rapid growth, The Campus Daily newspaper has found a lifeline in its digital edition. Recent survey data shows that newspapers have seen their audience decline significantly over the past decade, but are now stemming further losses with the help of online editions.</p>
-                        <p>Four-in-ten students say they read the campus newspaper yesterday, with 6% reading it online—4% read both print and online versions, while 2% read it only online. An additional 3% say they read something on The Campus Daily website yesterday.</p>
-                        <p>"The digital edition has been crucial to our survival," said Emily Richardson, Editor-in-Chief of The Campus Daily. "It allows busy students to catch up on campus news between classes, during meals, or while waiting for the bus. We've made our content accessible wherever students are."</p>
+                        <p>While social media platforms continue their rapid growth, The Campus Daily newspaper has
+                            found a lifeline in its digital edition. Recent survey data shows that newspapers have seen
+                            their audience decline significantly over the past decade, but are now stemming further
+                            losses with the help of online editions.</p>
+                        <p>Four-in-ten students say they read the campus newspaper yesterday, with 6% reading it
+                            online—4% read both print and online versions, while 2% read it only online. An additional
+                            3% say they read something on The Campus Daily website yesterday.</p>
+                        <p>"The digital edition has been crucial to our survival," said Emily Richardson,
+                            Editor-in-Chief of The Campus Daily. "It allows busy students to catch up on campus news
+                            between classes, during meals, or while waiting for the bus. We've made our content
+                            accessible wherever students are."</p>
                     </div>
 
                     <div class="quote-box">
                         <div class="quote-text">
-                            "I used to skip reading the campus paper because I never walked past the newspaper stands. Now I can read it on my phone during breakfast. It's become part of my morning routine."
+                            "I used to skip reading the campus paper because I never walked past the newspaper stands.
+                            Now I can read it on my phone during breakfast. It's become part of my morning routine."
                         </div>
                         <div class="quote-author">— Alex Kim, Junior, Computer Science Major</div>
                     </div>
@@ -795,7 +821,8 @@
             </div>
 
             <div class="page-footer">
-                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555)
+                123-4567
             </div>
         </div>
 
@@ -828,9 +855,18 @@
                         <span>December 28, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>The audience for online campus news is fairly broad, but not particularly deep, according to our comprehensive survey. Students who logged on for campus news yesterday spent just 25 minutes, on average, getting news online. That is significantly less than the average number of minutes that newspaper readers and broadcast news viewers spend with those sources.</p>
-                        <p>While nearly half of all students (48%) spend at least 30 minutes getting news from traditional sources like broadcast or print, just 9% spend that long getting news online. This suggests that while online platforms have succeeded in attracting viewers, they have not yet succeeded in holding their attention for extended periods.</p>
-                        <p>"The web serves mostly as a supplement to other sources rather than a primary source of comprehensive campus information," explained Dr. Robert Chen, Professor of Digital Media. "Students use it for quick updates and headlines, but when they want detailed analysis or in-depth features, they still turn to traditional media."</p>
+                        <p>The audience for online campus news is fairly broad, but not particularly deep, according to
+                            our comprehensive survey. Students who logged on for campus news yesterday spent just 25
+                            minutes, on average, getting news online. That is significantly less than the average number
+                            of minutes that newspaper readers and broadcast news viewers spend with those sources.</p>
+                        <p>While nearly half of all students (48%) spend at least 30 minutes getting news from
+                            traditional sources like broadcast or print, just 9% spend that long getting news online.
+                            This suggests that while online platforms have succeeded in attracting viewers, they have
+                            not yet succeeded in holding their attention for extended periods.</p>
+                        <p>"The web serves mostly as a supplement to other sources rather than a primary source of
+                            comprehensive campus information," explained Dr. Robert Chen, Professor of Digital Media.
+                            "Students use it for quick updates and headlines, but when they want detailed analysis or
+                            in-depth features, they still turn to traditional media."</p>
                     </div>
                 </article>
 
@@ -874,9 +910,16 @@
                         <span>December 28, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>To some degree, news consumers are drawn to the internet for the very reason that it does not take much time to get news online. When surveyed about what distinguishes web news, most students cited format and accessibility—the ease of navigation, speed with which information can be gathered, and convenience "at my fingertips."</p>
-                        <p>Convenience is a factor for newspapers and television as well, but more readers and viewers of traditional media refer to the subject matter and journalistic and editorial qualities of the content than is the case among web users.</p>
-                        <p>Of the 32% of students who got news on the internet yesterday, only a minority visited campus newspaper websites. Instead, quick news aggregators like the Student Portal, Campus Hub, and social media feeds dominate the online news landscape.</p>
+                        <p>To some degree, news consumers are drawn to the internet for the very reason that it does not
+                            take much time to get news online. When surveyed about what distinguishes web news, most
+                            students cited format and accessibility—the ease of navigation, speed with which information
+                            can be gathered, and convenience "at my fingertips."</p>
+                        <p>Convenience is a factor for newspapers and television as well, but more readers and viewers
+                            of traditional media refer to the subject matter and journalistic and editorial qualities of
+                            the content than is the case among web users.</p>
+                        <p>Of the 32% of students who got news on the internet yesterday, only a minority visited campus
+                            newspaper websites. Instead, quick news aggregators like the Student Portal, Campus Hub, and
+                            social media feeds dominate the online news landscape.</p>
                     </div>
 
                     <div class="two-column">
@@ -884,14 +927,20 @@
                             <div class="card-icon">🚀</div>
                             <div class="card-title">Why Students Love Online News</div>
                             <div class="card-text">
-                                Students emphasized three key advantages: instant access from anywhere on campus, ability to quickly scan headlines during busy schedules, and mobile-friendly formats that work on phones and tablets. "I can check campus news between classes in 30 seconds," one student noted.
+                                Students emphasized three key advantages: instant access from anywhere on campus,
+                                ability to quickly scan headlines during busy schedules, and mobile-friendly formats
+                                that work on phones and tablets. "I can check campus news between classes in 30
+                                seconds," one student noted.
                             </div>
                         </div>
                         <div class="info-card">
                             <div class="card-icon">📰</div>
                             <div class="card-title">Why Print Still Matters</div>
                             <div class="card-text">
-                                Traditional newspaper readers cite different benefits: more relaxing experience (57% find it relaxing vs. 33% for online), better for deep reading and analysis, superior editorial quality, and the tactile experience of physical pages. "There's something about sitting with a real newspaper," readers say.
+                                Traditional newspaper readers cite different benefits: more relaxing experience (57%
+                                find it relaxing vs. 33% for online), better for deep reading and analysis, superior
+                                editorial quality, and the tactile experience of physical pages. "There's something
+                                about sitting with a real newspaper," readers say.
                             </div>
                         </div>
                     </div>
@@ -900,13 +949,16 @@
                 <div class="highlight-box">
                     <div class="highlight-title">⚡ Key Finding</div>
                     <div class="highlight-text">
-                        The rise of online news has not increased overall news consumption on campus. Students today spend virtually the same amount of time (67 minutes) getting news from all sources combined as they did a decade ago (66 minutes)—the pie has just been sliced differently.
+                        The rise of online news has not increased overall news consumption on campus. Students today
+                        spend virtually the same amount of time (67 minutes) getting news from all sources combined as
+                        they did a decade ago (66 minutes)—the pie has just been sliced differently.
                     </div>
                 </div>
             </div>
 
             <div class="page-footer">
-                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555)
+                123-4567
             </div>
         </div>
 
@@ -939,9 +991,18 @@
                         <span>December 28, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>As internet news has gone more mainstream, its audience has aged in unexpected ways. Since 2020, nearly all of the growth among regular internet news users has occurred among graduate students and older undergraduates aged 23-28. By contrast, virtually the same percentage of 18-20 year-olds say they get news online at least three days a week as did so six years ago (30% now, 29% then).</p>
-                        <p>Perhaps most surprisingly, graduate students and seniors now consume online news at rates comparable to or exceeding those of freshmen and sophomores. This challenges the common assumption that younger students are inherently more engaged with digital platforms.</p>
-                        <p>"We expected to see a clear age gradient, with the youngest students being the most digitally engaged," said Dr. Lisa Anderson, who led the demographic analysis. "Instead, we found that older students, who may have more complex schedules and greater need for flexible information access, have embraced online news just as enthusiastically."</p>
+                        <p>As internet news has gone more mainstream, its audience has aged in unexpected ways. Since
+                            2020, nearly all of the growth among regular internet news users has occurred among graduate
+                            students and older undergraduates aged 23-28. By contrast, virtually the same percentage of
+                            18-20 year-olds say they get news online at least three days a week as did so six years ago
+                            (30% now, 29% then).</p>
+                        <p>Perhaps most surprisingly, graduate students and seniors now consume online news at rates
+                            comparable to or exceeding those of freshmen and sophomores. This challenges the common
+                            assumption that younger students are inherently more engaged with digital platforms.</p>
+                        <p>"We expected to see a clear age gradient, with the youngest students being the most digitally
+                            engaged," said Dr. Lisa Anderson, who led the demographic analysis. "Instead, we found that
+                            older students, who may have more complex schedules and greater need for flexible
+                            information access, have embraced online news just as enthusiastically."</p>
                     </div>
                 </article>
 
@@ -984,21 +1045,32 @@
 
                 <article class="article">
                     <h3 class="article-headline">The Generation Gap Narrows—But Not How Expected</h3>
-                    <p class="article-subheadline">Print readership declines across all age groups, complicating the digital transition</p>
+                    <p class="article-subheadline">Print readership declines across all age groups, complicating the
+                        digital transition</p>
                     <div class="article-meta">
                         <span>By <span class="byline">David Kim</span>, Campus Life Editor</span>
                         <span>|</span>
                         <span>December 27, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>The long-standing generation gap in newspaper reading has narrowed over the past decade, in part because of online newspapers, but this is a decidedly mixed blessing for campus media outlets. It reflects the fact that while newspapers continue to draw relatively low numbers of young readers—just 29% of those under age 21—that figure has remained stable since 2019, as some young people have turned to online editions.</p>
-                        <p>However, newspaper readership among older students has fallen significantly over that period. Even when online newspapers are included in the count, readership has declined across virtually all demographic groups.</p>
-                        <p>The data suggests a complex picture: while digital editions have helped stabilize readership among younger students, they have not been sufficient to prevent overall decline as older, traditionally more engaged readers have reduced their news consumption.</p>
+                        <p>The long-standing generation gap in newspaper reading has narrowed over the past decade, in
+                            part because of online newspapers, but this is a decidedly mixed blessing for campus media
+                            outlets. It reflects the fact that while newspapers continue to draw relatively low numbers
+                            of young readers—just 29% of those under age 21—that figure has remained stable since 2019,
+                            as some young people have turned to online editions.</p>
+                        <p>However, newspaper readership among older students has fallen significantly over that period.
+                            Even when online newspapers are included in the count, readership has declined across
+                            virtually all demographic groups.</p>
+                        <p>The data suggests a complex picture: while digital editions have helped stabilize readership
+                            among younger students, they have not been sufficient to prevent overall decline as older,
+                            traditionally more engaged readers have reduced their news consumption.</p>
                     </div>
 
                     <div class="quote-box">
                         <div class="quote-text">
-                            "My freshman year, I never touched the campus newspaper. Now as a senior, I read the online edition almost every day. My schedule is busier, and I need to stay informed about career fairs, graduate school info sessions, and department news."
+                            "My freshman year, I never touched the campus newspaper. Now as a senior, I read the online
+                            edition almost every day. My schedule is busier, and I need to stay informed about career
+                            fairs, graduate school info sessions, and department news."
                         </div>
                         <div class="quote-author">— Marcus Thompson, Senior, Business Administration</div>
                     </div>
@@ -1034,13 +1106,17 @@
                 <div class="highlight-box">
                     <div class="highlight-title">🔍 Researcher's Note</div>
                     <div class="highlight-text">
-                        "The assumption that 'digital natives' are automatically more engaged with online news has proven false. What matters more is life stage and information needs. A busy senior preparing for graduation is more motivated to stay informed than a freshman still adjusting to college life, regardless of their comfort with technology." — Dr. Lisa Anderson, Lead Researcher
+                        "The assumption that 'digital natives' are automatically more engaged with online news has
+                        proven false. What matters more is life stage and information needs. A busy senior preparing for
+                        graduation is more motivated to stay informed than a freshman still adjusting to college life,
+                        regardless of their comfort with technology." — Dr. Lisa Anderson, Lead Researcher
                     </div>
                 </div>
             </div>
 
             <div class="page-footer">
-                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555)
+                123-4567
             </div>
         </div>
 
@@ -1066,17 +1142,30 @@
 
                 <article class="article">
                     <h3 class="article-headline">Campus Broadcasting Faces Existential Crisis</h3>
-                    <p class="article-subheadline">Radio and TV news audiences slip as students migrate to on-demand platforms</p>
+                    <p class="article-subheadline">Radio and TV news audiences slip as students migrate to on-demand
+                        platforms</p>
                     <div class="article-meta">
                         <span>By <span class="byline">Olivia Martinez</span>, Media Correspondent</span>
                         <span>|</span>
                         <span>December 28, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>Broadcast news outlets on campus continue to struggle. Over the last two years alone, the audiences for campus radio news, TV broadcasts, and live-streamed video content have all slipped significantly. While The Campus Daily newspaper has found some stability through its digital edition, broadcast media has yet to find a successful formula for the digital age.</p>
-                        <p>Campus Radio WCMP, which once attracted hundreds of listeners during its evening news broadcast, now struggles to maintain an audience of even fifty students during prime time. Similarly, the Student Television Network's nightly news program has seen viewership drop by 40% since 2023.</p>
-                        <p>"The fundamental problem is that broadcast media requires students to tune in at a specific time," explained Tom Harrison, Station Manager of WCMP. "Today's students want information on demand, when it's convenient for them, not when we decide to broadcast it."</p>
-                        <p>Even so, the recent trends in broadcast news consumption are relatively stable when compared to the 2010s, when campus radio and TV were suffering losses of far greater magnitude. Some media analysts suggest that broadcast may have found its floor—a small but dedicated audience that values the live, communal experience of broadcast news.</p>
+                        <p>Broadcast news outlets on campus continue to struggle. Over the last two years alone, the
+                            audiences for campus radio news, TV broadcasts, and live-streamed video content have all
+                            slipped significantly. While The Campus Daily newspaper has found some stability through its
+                            digital edition, broadcast media has yet to find a successful formula for the digital age.
+                        </p>
+                        <p>Campus Radio WCMP, which once attracted hundreds of listeners during its evening news
+                            broadcast, now struggles to maintain an audience of even fifty students during prime time.
+                            Similarly, the Student Television Network's nightly news program has seen viewership drop by
+                            40% since 2023.</p>
+                        <p>"The fundamental problem is that broadcast media requires students to tune in at a specific
+                            time," explained Tom Harrison, Station Manager of WCMP. "Today's students want information
+                            on demand, when it's convenient for them, not when we decide to broadcast it."</p>
+                        <p>Even so, the recent trends in broadcast news consumption are relatively stable when compared
+                            to the 2010s, when campus radio and TV were suffering losses of far greater magnitude. Some
+                            media analysts suggest that broadcast may have found its floor—a small but dedicated
+                            audience that values the live, communal experience of broadcast news.</p>
                     </div>
                 </article>
 
@@ -1107,23 +1196,34 @@
 
                 <article class="article">
                     <h3 class="article-headline">What Students Say About Their News Experiences</h3>
-                    <p class="article-subheadline">Different media offer distinct value propositions to campus readers and viewers</p>
+                    <p class="article-subheadline">Different media offer distinct value propositions to campus readers
+                        and viewers</p>
                     <div class="article-meta">
                         <span>By <span class="byline">Jennifer Lee</span>, Survey Analysis Team</span>
                         <span>|</span>
                         <span>December 27, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>The bottom line for the vast majority of news consumers—regardless of news source—is that it provides information they need to know each day. However, different media offer additional benefits that shape student preferences.</p>
-                        <p>A majority of newspaper readers (57%) say they find the experience "relaxing," compared to fewer regular radio news consumers (44%) and TV news consumers (41%). Internet news users find it even less relaxing, with only 33% describing their online news experience this way.</p>
-                        <p>"I read the paper on Sunday mornings with coffee—it's peaceful," said sophomore Maya Patel. "But when I'm checking news on my phone between classes, it's stressful. I'm constantly refreshing, getting notifications, feeling like I'm missing something."</p>
-                        <p>This suggests that while online news excels at convenience and speed, it may fail to provide the contemplative, immersive experience that many students value when they have time for deeper engagement with campus news and issues.</p>
+                        <p>The bottom line for the vast majority of news consumers—regardless of news source—is that it
+                            provides information they need to know each day. However, different media offer additional
+                            benefits that shape student preferences.</p>
+                        <p>A majority of newspaper readers (57%) say they find the experience "relaxing," compared to
+                            fewer regular radio news consumers (44%) and TV news consumers (41%). Internet news users
+                            find it even less relaxing, with only 33% describing their online news experience this way.
+                        </p>
+                        <p>"I read the paper on Sunday mornings with coffee—it's peaceful," said sophomore Maya Patel.
+                            "But when I'm checking news on my phone between classes, it's stressful. I'm constantly
+                            refreshing, getting notifications, feeling like I'm missing something."</p>
+                        <p>This suggests that while online news excels at convenience and speed, it may fail to provide
+                            the contemplative, immersive experience that many students value when they have time for
+                            deeper engagement with campus news and issues.</p>
                     </div>
                 </article>
 
                 <div class="chart-container">
                     <div class="chart-title">How "Relaxing" Students Find Different News Sources</div>
-                    <div class="chart-subtitle">Percentage who describe their news consumption as a "relaxing experience"</div>
+                    <div class="chart-subtitle">Percentage who describe their news consumption as a "relaxing
+                        experience"</div>
                     <div class="bar-chart">
                         <div class="bar-item">
                             <div class="bar-label">Newspaper (Print)</div>
@@ -1157,28 +1257,36 @@
                         <div class="card-icon">✅</div>
                         <div class="card-title">What's Working</div>
                         <div class="card-text">
-                            Some broadcast outlets have found success by pivoting to podcast formats, creating short video clips for social media, and developing on-demand content libraries. "We're not abandoning live broadcasting, but we're also meeting students where they are," said WCMP's Harrison.
+                            Some broadcast outlets have found success by pivoting to podcast formats, creating short
+                            video clips for social media, and developing on-demand content libraries. "We're not
+                            abandoning live broadcasting, but we're also meeting students where they are," said WCMP's
+                            Harrison.
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="card-icon">⚠️</div>
                         <div class="card-title">Ongoing Challenges</div>
                         <div class="card-text">
-                            The economics of broadcast media make it difficult to sustain operations with small audiences. Equipment costs, studio maintenance, and staff time remain constant even as listener and viewership numbers decline. Several campus media outlets are considering consolidation or partnership models.
+                            The economics of broadcast media make it difficult to sustain operations with small
+                            audiences. Equipment costs, studio maintenance, and staff time remain constant even as
+                            listener and viewership numbers decline. Several campus media outlets are considering
+                            consolidation or partnership models.
                         </div>
                     </div>
                 </div>
 
                 <div class="quote-box">
                     <div class="quote-text">
-                        "I grew up with YouTube and TikTok. The idea of waiting until 6 PM to hear the news seems absurd to me. Why would I do that when I can get any information I want instantly on my phone?"
+                        "I grew up with YouTube and TikTok. The idea of waiting until 6 PM to hear the news seems absurd
+                        to me. Why would I do that when I can get any information I want instantly on my phone?"
                     </div>
                     <div class="quote-author">— Chris Johnson, Freshman, Communications Major</div>
                 </div>
             </div>
 
             <div class="page-footer">
-                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555)
+                123-4567
             </div>
         </div>
 
@@ -1204,59 +1312,83 @@
 
                 <article class="article">
                     <h3 class="article-headline">Editorial: Quality Over Speed in the Digital Age</h3>
-                    <p class="article-subheadline">As news consumption fragments, preserving in-depth journalism becomes critical</p>
+                    <p class="article-subheadline">As news consumption fragments, preserving in-depth journalism becomes
+                        critical</p>
                     <div class="article-meta">
                         <span>By <span class="byline">The Editorial Board</span></span>
                         <span>|</span>
                         <span>December 28, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>The data presented in this week's special report paints a complex picture of campus news consumption. On one hand, more students than ever have access to campus information through multiple platforms. On the other, the quality and depth of news consumption has declined as students increasingly favor quick headlines over comprehensive reporting.</p>
-                        <p>This editorial board believes that while embracing digital platforms is necessary for survival, campus media must not abandon its core mission: providing thoughtful, thorough, and accurate journalism that serves our community's need to be well-informed.</p>
-                        <p>The fact that students spend an average of just 25 minutes with online news—compared to 44 minutes with print newspapers—should concern anyone who cares about informed civic participation. Complex campus issues cannot be adequately understood through headlines and brief summaries alone.</p>
-                        <p>We call on campus media outlets to resist the temptation to simply chase clicks and optimize for quick engagement. Instead, we must find ways to make substantial, quality journalism accessible and appealing in digital formats. This means investing in multimedia storytelling, interactive features, and mobile-optimized long-form content.</p>
-                        <p>We also call on students to recognize their role in this ecosystem. By choosing to engage with comprehensive news coverage—even when it requires more time and attention—you support the kind of journalism that our democracy depends upon.</p>
+                        <p>The data presented in this week's special report paints a complex picture of campus news
+                            consumption. On one hand, more students than ever have access to campus information through
+                            multiple platforms. On the other, the quality and depth of news consumption has declined as
+                            students increasingly favor quick headlines over comprehensive reporting.</p>
+                        <p>This editorial board believes that while embracing digital platforms is necessary for
+                            survival, campus media must not abandon its core mission: providing thoughtful, thorough,
+                            and accurate journalism that serves our community's need to be well-informed.</p>
+                        <p>The fact that students spend an average of just 25 minutes with online news—compared to 44
+                            minutes with print newspapers—should concern anyone who cares about informed civic
+                            participation. Complex campus issues cannot be adequately understood through headlines and
+                            brief summaries alone.</p>
+                        <p>We call on campus media outlets to resist the temptation to simply chase clicks and optimize
+                            for quick engagement. Instead, we must find ways to make substantial, quality journalism
+                            accessible and appealing in digital formats. This means investing in multimedia
+                            storytelling, interactive features, and mobile-optimized long-form content.</p>
+                        <p>We also call on students to recognize their role in this ecosystem. By choosing to engage
+                            with comprehensive news coverage—even when it requires more time and attention—you support
+                            the kind of journalism that our democracy depends upon.</p>
                     </div>
                 </article>
 
                 <div class="highlight-box">
                     <div class="highlight-title">📢 Our Recommendations</div>
                     <div class="highlight-text">
-                        <strong>For Students:</strong> Challenge yourself to read at least one in-depth article per week. Set aside 30 minutes for news consumption rather than fragmenting it throughout the day.<br><br>
-                        <strong>For Campus Media:</strong> Invest in training student journalists for multimedia storytelling. Create engaging digital formats that preserve depth and quality.<br><br>
-                        <strong>For Administration:</strong> Provide financial support for campus media outlets during this transition period. Quality journalism requires resources.
+                        <strong>For Students:</strong> Challenge yourself to read at least one in-depth article per
+                        week. Set aside 30 minutes for news consumption rather than fragmenting it throughout the
+                        day.<br><br>
+                        <strong>For Campus Media:</strong> Invest in training student journalists for multimedia
+                        storytelling. Create engaging digital formats that preserve depth and quality.<br><br>
+                        <strong>For Administration:</strong> Provide financial support for campus media outlets during
+                        this transition period. Quality journalism requires resources.
                     </div>
                 </div>
 
                 <article class="article">
                     <h3 class="article-headline">Student Voices: What We Want from Campus Media</h3>
-                    <p class="article-subheadline">Five students share their perspectives on the future of campus news</p>
+                    <p class="article-subheadline">Five students share their perspectives on the future of campus news
+                    </p>
                     <div class="article-meta">
                         <span>Compiled by <span class="byline">Student Affairs Committee</span></span>
                         <span>|</span>
                         <span>December 27, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>We asked students from different majors and class years to share their thoughts on how campus media should evolve. Here's what they told us:</p>
+                        <p>We asked students from different majors and class years to share their thoughts on how campus
+                            media should evolve. Here's what they told us:</p>
                     </div>
 
                     <div class="quote-box">
                         <div class="quote-text">
-                            "I want news I can trust. There's so much misinformation on social media. Campus media needs to be the authoritative source that cuts through the noise with verified facts."
+                            "I want news I can trust. There's so much misinformation on social media. Campus media needs
+                            to be the authoritative source that cuts through the noise with verified facts."
                         </div>
                         <div class="quote-author">— Priya Sharma, Sophomore, Political Science</div>
                     </div>
 
                     <div class="quote-box">
                         <div class="quote-text">
-                            "Make it visual. I'm more likely to watch a 2-minute video or look at an infographic than read a 1,000-word article. The information can still be deep, but the format matters."
+                            "Make it visual. I'm more likely to watch a 2-minute video or look at an infographic than
+                            read a 1,000-word article. The information can still be deep, but the format matters."
                         </div>
                         <div class="quote-author">— Tyler Washington, Junior, Graphic Design</div>
                     </div>
 
                     <div class="quote-box">
                         <div class="quote-text">
-                            "I actually prefer reading longer articles, but only when I have time. Give me good summaries with links to go deeper when I want to. Not everyone wants the same level of detail."
+                            "I actually prefer reading longer articles, but only when I have time. Give me good
+                            summaries with links to go deeper when I want to. Not everyone wants the same level of
+                            detail."
                         </div>
                         <div class="quote-author">— Amanda Chen, Senior, Biology</div>
                     </div>
@@ -1299,9 +1431,18 @@
                         <span>December 28, 2025</span>
                     </div>
                     <div class="article-text">
-                        <p>The research presented in this special report demonstrates that we stand at a crossroads. The old model of campus journalism is fading, but the new model is still taking shape. How we navigate this transition will determine whether our campus community has access to the high-quality, in-depth journalism it needs to make informed decisions about our collective future.</p>
-                        <p>At The Campus Daily, we are committed to evolving while staying true to our core values. We will meet students where they are—on their phones, on social media, consuming content in brief moments throughout their busy days. But we will not sacrifice accuracy, fairness, or depth in pursuit of convenience.</p>
-                        <p>We invite every member of our campus community to join us in this mission. Read thoughtfully, share responsibly, engage critically, and support the kind of journalism you want to see in the world.</p>
+                        <p>The research presented in this special report demonstrates that we stand at a crossroads. The
+                            old model of campus journalism is fading, but the new model is still taking shape. How we
+                            navigate this transition will determine whether our campus community has access to the
+                            high-quality, in-depth journalism it needs to make informed decisions about our collective
+                            future.</p>
+                        <p>At The Campus Daily, we are committed to evolving while staying true to our core values. We
+                            will meet students where they are—on their phones, on social media, consuming content in
+                            brief moments throughout their busy days. But we will not sacrifice accuracy, fairness, or
+                            depth in pursuit of convenience.</p>
+                        <p>We invite every member of our campus community to join us in this mission. Read thoughtfully,
+                            share responsibly, engage critically, and support the kind of journalism you want to see in
+                            the world.</p>
                         <p>The future of campus media is being written right now. Let's write it together.</p>
                     </div>
                 </article>
@@ -1333,17 +1474,15 @@
             </div>
 
             <div class="page-footer">
-                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567<br>
-                Thank you for reading this special report. Your engagement with quality journalism makes our work possible.
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555)
+                123-4567<br>
+                Thank you for reading this special report. Your engagement with quality journalism makes our work
+                possible.
             </div>
         </div>
 
     </div>
 
-    <!-- Presentation Guide -->
-    <div class="presentation-guide" onclick="showGuide()">
-        📋 Presentation Guide
-    </div>
 
     <script>
         // Page Navigation
@@ -1352,10 +1491,10 @@
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            
+
             // Show selected page
             document.getElementById('page' + pageNum).classList.add('active');
-            
+
             // Update nav buttons
             document.querySelectorAll('.nav-btn').forEach((btn, index) => {
                 if (index === pageNum - 1) {
@@ -1364,91 +1503,13 @@
                     btn.classList.remove('active');
                 }
             });
-            
+
             // Scroll to top
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Presentation Guide
-        function showGuide() {
-            const guide = `
-🎤 PRESENTATION GUIDE (10-15 minutes total)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 MEMBER 1 - Front Page (2-3 minutes)
-📄 Page A1
-• Introduce the newspaper and the special report topic
-• Present main headline: "One-Third of Students Now Get Campus News Online"
-• Explain key statistics from the survey (3,204 students surveyed)
-• Discuss how online news went from 2% to 32% in 10 years
-• Mention the digital edition helping traditional newspaper survive
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 MEMBER 2 - News Analysis (2-3 minutes)
-📄 Page A2
-• Present "The Online News Paradox" - broad but not deep
-• Show data: students spend only 25 minutes online vs 44 minutes with print
-• Explain what students value: speed and convenience over depth
-• Discuss the key finding: total news time hasn't increased (still 67 minutes)
-• Present the comparison chart of different news sources
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 MEMBER 3 - Demographics (2-3 minutes)
-📄 Page B1
-• Present surprising finding: "The Aging of Online News"
-• Show data: older students (23-28) now consume more online news than freshmen
-• Explain why this challenges assumptions about "digital natives"
-• Discuss the generation gap narrowing (but in unexpected ways)
-• Present reasons why older students are more engaged
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 MEMBER 4 - Media Competition (2-3 minutes)
-📄 Page B2
-• Present broadcast media struggles (radio, TV news declining)
-• Show 2-year decline data: radio -28%, TV -34%
-• Discuss the "relaxing experience" data (57% for print vs 33% online)
-• Explain challenges of live broadcasting vs on-demand content
-• Share student quote about generational differences
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 MEMBER 5 - Opinion & Future (3-4 minutes)
-📄 Page C1
-• Present editorial perspective on quality vs speed
-• Discuss recommendations for students, media, and administration
-• Share student voices about what they want from campus media
-• Present opportunities and challenges ahead
-• Conclude with call to action and future outlook
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-💡 TIPS FOR SUCCESS:
-✓ Each member should practice their section beforehand
-✓ Use the navigation buttons to move between pages during presentation
-✓ Reference the charts and statistics visible on each page
-✓ Read or paraphrase the quotes to bring stories to life
-✓ Connect your section to the reference passage about news consumption
-✓ Time yourselves - aim for 10-15 minutes total
-✓ End with the key message: news consumption patterns have fundamentally changed
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🎬 RECORDING TIPS:
-• Use screen recording software to capture the newspaper pages
-• Each member can record their section separately and combine later
-• OR do a live presentation with one person navigating while others speak
-• Practice transitions between sections for smooth flow
-            `;
-            
-            alert(guide);
-        }
-
         // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowRight') {
                 const currentPage = document.querySelector('.page.active');
                 const pageNum = parseInt(currentPage.id.replace('page', ''));
@@ -1464,7 +1525,7 @@
         });
 
         // Animate charts on page load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const bars = document.querySelectorAll('.bar-fill');
             bars.forEach((bar, index) => {
                 bar.style.animationDelay = (index * 0.1) + 's';
@@ -1472,4 +1533,5 @@
         });
     </script>
 </body>
+
 </html>
