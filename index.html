@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Campus Daily - Complete Newspaper Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #c41e3a;
+            --dark-navy: #0d1b2a;
+            --accent-gold: #d4af37;
+            --paper: #fefdfb;
+            --ink: #1b1b1b;
+            --gray: #555555;
+            --light-gray: #e8e8e8;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--ink);
+            line-height: 1.65;
+        }
+
+        /* Navigation Bar */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark-navy);
+            color: white;
+            padding: 18px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-pages {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 10px 22px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-radius: 4px;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: var(--dark-navy);
+            transform: translateY(-2px);
+            border-color: white;
+        }
+
+        .nav-btn.active {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.4);
+        }
+
+        /* Page Container */
+        .page-container {
+            margin-top: 100px;
+            padding: 30px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .page {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--paper);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.05),
+                0 15px 60px rgba(0,0,0,0.15);
+            animation: pageSlide 0.6s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Newspaper Header */
+        .newspaper-header {
+            border-bottom: 5px double var(--ink);
+            padding: 50px 50px 30px;
+            background: 
+                linear-gradient(180deg, rgba(212, 175, 55, 0.04) 0%, transparent 100%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 3px);
+            position: relative;
+        }
+
+        .newspaper-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-gold) 100%);
+        }
+
+        .page-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 11px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .newspaper-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 76px;
+            font-weight: 900;
+            color: var(--ink);
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: -2px;
+            text-shadow: 3px 3px 0 rgba(196, 30, 58, 0.08);
+            line-height: 0.95;
+        }
+
+        .newspaper-motto {
+            font-size: 17px;
+            color: var(--gray);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.15);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-badge {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #a01528 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 900;
+            font-size: 11px;
+            box-shadow: 0 3px 10px rgba(196, 30, 58, 0.3);
+            letter-spacing: 1.5px;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 50px;
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .section-category {
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            font-weight: 900;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--ink);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* Articles */
+        .article {
+            margin-bottom: 45px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 15px;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .article-headline:hover {
+            color: var(--primary-red);
+        }
+
+        .article-subheadline {
+            font-size: 20px;
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .article-meta {
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .byline {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        .article-text {
+            font-size: 17px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #333;
+        }
+
+        .article-text p {
+            margin-bottom: 18px;
+        }
+
+        .article-text p:first-letter {
+            font-size: 3.5em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            float: left;
+            line-height: 0.8;
+            margin: 8px 8px 0 0;
+            color: var(--primary-red);
+        }
+
+        /* Statistics Box */
+        .stats-box {
+            background: linear-gradient(135deg, var(--dark-navy) 0%, #1e3a5f 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 10px;
+            margin: 35px 0;
+            box-shadow: 0 8px 25px rgba(13, 27, 42, 0.3);
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .stats-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .stats-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            line-height: 1.4;
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            border-left: 6px solid var(--accent-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+            padding: 30px 35px;
+            margin: 35px 0;
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+        }
+
+        .quote-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 15px;
+            font-size: 16px;
+            color: var(--gray);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            margin: 35px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--light-gray);
+        }
+
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .chart-subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bar-label {
+            width: 180px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            color: var(--ink);
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 35px;
+            background: var(--light-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-gold) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: 900;
+            font-size: 14px;
+            font-family: 'Lato', sans-serif;
+            animation: barGrow 1.2s ease-out;
+            box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+        }
+
+        @keyframes barGrow {
+            from { width: 0; }
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            margin: 35px 0;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--primary-red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--ink);
+        }
+
+        .card-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+            border: 2px solid var(--accent-gold);
+            padding: 25px;
+            margin: 35px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .highlight-title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            color: #8b6914;
+            margin-bottom: 12px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlight-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5a4a0f;
+        }
+
+        /* Lists */
+        .article-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+
+        .article-list li {
+            padding: 15px 0 15px 35px;
+            position: relative;
+            border-bottom: 1px dashed var(--light-gray);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .article-list li:last-child {
+            border-bottom: none;
+        }
+
+        .article-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        /* Image Placeholder */
+        .article-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Lato', sans-serif;
+            border: 4px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Continued Reading */
+        .continue-reading {
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            color: var(--primary-red);
+            font-weight: 900;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .continue-reading:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        .page-footer {
+            background: var(--ink);
+            color: white;
+            padding: 25px 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Presentation Helper */
+        .presentation-guide {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-red);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            font-weight: 900;
+            box-shadow: 0 6px 25px rgba(196, 30, 58, 0.5);
+            cursor: pointer;
+            animation: pulse 2.5s ease-in-out infinite;
+            z-index: 999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(196, 30, 58, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 35px rgba(196, 30, 58, 0.7); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .newspaper-title {
+                font-size: 52px;
+            }
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            .page-content {
+                padding: 35px;
+            }
+            .newspaper-header {
+                padding: 35px 35px 25px;
+            }
+            .nav-content {
+                padding: 0 20px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navigation, .presentation-guide {
+                display: none;
+            }
+            .page-container {
+                margin-top: 0;
+                padding: 0;
+            }
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-content">
+            <div class="nav-title">📰 The Campus Daily</div>
+            <div class="nav-pages">
+                <button class="nav-btn active" onclick="showPage(1)">Page A1</button>
+                <button class="nav-btn" onclick="showPage(2)">Page A2</button>
+                <button class="nav-btn" onclick="showPage(3)">Page B1</button>
+                <button class="nav-btn" onclick="showPage(4)">Page B2</button>
+                <button class="nav-btn" onclick="showPage(5)">Page C1</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        
+        <!-- ==================== PAGE 1: FRONT PAGE (Member 1) ==================== -->
+        <div class="page active" id="page1">
+            <div class="newspaper-header">
+                <div class="page-label">Section A • Page 1 • Front Page</div>
+                <h1 class="newspaper-title">The Campus Daily</h1>
+                <p class="newspaper-motto">"Truth, Knowledge, and Campus Life"</p>
+                <div class="header-info">
+                    <span>Monday, December 29, 2025</span>
+                    <span class="member-badge">👤 MEMBER 1</span>
+                    <span>Volume XLII, No. 156</span>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="section-header">
+                    <div class="section-category">🔥 Breaking News</div>
+                    <h2 class="section-title">Campus News Consumption Revolution</h2>
+                    <p class="section-subtitle">How Students Get Their Daily Information Has Changed Forever</p>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">One-Third of Students Now Get Campus News Online</h3>
+                    <p class="article-subheadline">Digital platforms have transformed from novelty to necessity in just ten years</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Sarah Chen</span>, Staff Reporter</span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                        <span>|</span>
+                        <span>Based on Pew Research Center Study</span>
+                    </div>
+                    <div class="article-text">
+                        <p>A decade ago, just one-in-fifty students at our university got campus news with some regularity from what was then a brand new source—social media and online platforms. Today, nearly one-in-three students regularly get news online about campus events, announcements, and activities.</p>
+                        <p>The comprehensive survey, conducted by the Student Affairs Office in collaboration with the School of Communications, reveals a dramatic shift in how our campus community consumes information. The study surveyed 3,204 students from April 27 to May 22, making it one of the most extensive investigations into student media habits ever conducted at our institution.</p>
+                        <p>"This represents a fundamental transformation in campus communication," said Dr. Jennifer Martinez, Professor of Media Studies. "What began as an experiment with digital bulletin boards has evolved into the primary information channel for a significant portion of our student body."</p>
+                        <p>The growth of online news consumption has particularly accelerated since 2020, when the pandemic forced many traditional campus activities and information channels to move online. However, researchers note that the growth rate has slowed considerably since 2023, suggesting the market may be reaching saturation.</p>
+                    </div>
+                </article>
+
+                <div class="stats-box">
+                    <div class="stats-header">
+                        <div class="stats-title">📊 Campus News Consumption at a Glance</div>
+                        <div class="stats-subtitle">Key findings from our comprehensive student survey</div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">32%</div>
+                            <div class="stat-label">Get News Regularly Online</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">43%</div>
+                            <div class="stat-label">Read Campus Newspaper (Print + Online)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25min</div>
+                            <div class="stat-label">Average Daily Time Spent on Campus News</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3,204</div>
+                            <div class="stat-label">Students Surveyed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Traditional Campus Newspaper Fights Back With Digital Edition</h3>
+                    <p class="article-subheadline">Online version helps stem readership decline, but challenges remain</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Michael Torres</span>, News Editor</span>
+                        <span>|</span>
+                        <span>December 27, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>While social media platforms continue their rapid growth, The Campus Daily newspaper has found a lifeline in its digital edition. Recent survey data shows that newspapers have seen their audience decline significantly over the past decade, but are now stemming further losses with the help of online editions.</p>
+                        <p>Four-in-ten students say they read the campus newspaper yesterday, with 6% reading it online—4% read both print and online versions, while 2% read it only online. An additional 3% say they read something on The Campus Daily website yesterday.</p>
+                        <p>"The digital edition has been crucial to our survival," said Emily Richardson, Editor-in-Chief of The Campus Daily. "It allows busy students to catch up on campus news between classes, during meals, or while waiting for the bus. We've made our content accessible wherever students are."</p>
+                    </div>
+
+                    <div class="quote-box">
+                        <div class="quote-text">
+                            "I used to skip reading the campus paper because I never walked past the newspaper stands. Now I can read it on my phone during breakfast. It's become part of my morning routine."
+                        </div>
+                        <div class="quote-author">— Alex Kim, Junior, Computer Science Major</div>
+                    </div>
+
+                    <div class="continue-reading">→ Continued on Page A3</div>
+                </article>
+            </div>
+
+            <div class="page-footer">
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+            </div>
+        </div>
+
+        <!-- ==================== PAGE 2: NEWS ANALYSIS (Member 2) ==================== -->
+        <div class="page" id="page2">
+            <div class="newspaper-header">
+                <div class="page-label">Section A • Page 2 • News Analysis</div>
+                <h1 class="newspaper-title">The Campus Daily</h1>
+                <p class="newspaper-motto">"Truth, Knowledge, and Campus Life"</p>
+                <div class="header-info">
+                    <span>Monday, December 29, 2025</span>
+                    <span class="member-badge">👤 MEMBER 2</span>
+                    <span>Volume XLII, No. 156</span>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="section-header">
+                    <div class="section-category">📈 In-Depth Analysis</div>
+                    <h2 class="section-title">The Online News Paradox</h2>
+                    <p class="section-subtitle">Students spend more time online, but less time with campus news</p>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Online News: Broad But Not Deep</h3>
+                    <p class="article-subheadline">Students prefer headlines and convenience over detailed reporting</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Rachel Johnson</span>, Senior Investigative Reporter</span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>The audience for online campus news is fairly broad, but not particularly deep, according to our comprehensive survey. Students who logged on for campus news yesterday spent just 25 minutes, on average, getting news online. That is significantly less than the average number of minutes that newspaper readers and broadcast news viewers spend with those sources.</p>
+                        <p>While nearly half of all students (48%) spend at least 30 minutes getting news from traditional sources like broadcast or print, just 9% spend that long getting news online. This suggests that while online platforms have succeeded in attracting viewers, they have not yet succeeded in holding their attention for extended periods.</p>
+                        <p>"The web serves mostly as a supplement to other sources rather than a primary source of comprehensive campus information," explained Dr. Robert Chen, Professor of Digital Media. "Students use it for quick updates and headlines, but when they want detailed analysis or in-depth features, they still turn to traditional media."</p>
+                    </div>
+                </article>
+
+                <div class="chart-container">
+                    <div class="chart-title">Average Time Spent with Different News Sources</div>
+                    <div class="chart-subtitle">Minutes per day spent consuming campus news, by platform</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Print Newspaper</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 88%;">44 min</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Campus Radio</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 76%;">38 min</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">TV/Broadcast</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 72%;">36 min</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Online News</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 50%;">25 min</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">What Students Value in Online News</h3>
+                    <p class="article-subheadline">Speed and convenience trump depth and analysis</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">James Park</span>, Features Writer</span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>To some degree, news consumers are drawn to the internet for the very reason that it does not take much time to get news online. When surveyed about what distinguishes web news, most students cited format and accessibility—the ease of navigation, speed with which information can be gathered, and convenience "at my fingertips."</p>
+                        <p>Convenience is a factor for newspapers and television as well, but more readers and viewers of traditional media refer to the subject matter and journalistic and editorial qualities of the content than is the case among web users.</p>
+                        <p>Of the 32% of students who got news on the internet yesterday, only a minority visited campus newspaper websites. Instead, quick news aggregators like the Student Portal, Campus Hub, and social media feeds dominate the online news landscape.</p>
+                    </div>
+
+                    <div class="two-column">
+                        <div class="info-card">
+                            <div class="card-icon">🚀</div>
+                            <div class="card-title">Why Students Love Online News</div>
+                            <div class="card-text">
+                                Students emphasized three key advantages: instant access from anywhere on campus, ability to quickly scan headlines during busy schedules, and mobile-friendly formats that work on phones and tablets. "I can check campus news between classes in 30 seconds," one student noted.
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="card-icon">📰</div>
+                            <div class="card-title">Why Print Still Matters</div>
+                            <div class="card-text">
+                                Traditional newspaper readers cite different benefits: more relaxing experience (57% find it relaxing vs. 33% for online), better for deep reading and analysis, superior editorial quality, and the tactile experience of physical pages. "There's something about sitting with a real newspaper," readers say.
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="highlight-box">
+                    <div class="highlight-title">⚡ Key Finding</div>
+                    <div class="highlight-text">
+                        The rise of online news has not increased overall news consumption on campus. Students today spend virtually the same amount of time (67 minutes) getting news from all sources combined as they did a decade ago (66 minutes)—the pie has just been sliced differently.
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+            </div>
+        </div>
+
+        <!-- ==================== PAGE 3: DEMOGRAPHIC TRENDS (Member 3) ==================== -->
+        <div class="page" id="page3">
+            <div class="newspaper-header">
+                <div class="page-label">Section B • Page 1 • Trends & Demographics</div>
+                <h1 class="newspaper-title">The Campus Daily</h1>
+                <p class="newspaper-motto">"Truth, Knowledge, and Campus Life"</p>
+                <div class="header-info">
+                    <span>Monday, December 29, 2025</span>
+                    <span class="member-badge">👤 MEMBER 3</span>
+                    <span>Volume XLII, No. 156</span>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="section-header">
+                    <div class="section-category">👥 Demographics</div>
+                    <h2 class="section-title">The Aging of Online News</h2>
+                    <p class="section-subtitle">Surprising findings challenge assumptions about young readers</p>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Online News Goes Mainstream, Audience Ages</h3>
+                    <p class="article-subheadline">Younger students no longer dominate digital news consumption</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Emma Rodriguez</span>, Data Journalist</span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>As internet news has gone more mainstream, its audience has aged in unexpected ways. Since 2020, nearly all of the growth among regular internet news users has occurred among graduate students and older undergraduates aged 23-28. By contrast, virtually the same percentage of 18-20 year-olds say they get news online at least three days a week as did so six years ago (30% now, 29% then).</p>
+                        <p>Perhaps most surprisingly, graduate students and seniors now consume online news at rates comparable to or exceeding those of freshmen and sophomores. This challenges the common assumption that younger students are inherently more engaged with digital platforms.</p>
+                        <p>"We expected to see a clear age gradient, with the youngest students being the most digitally engaged," said Dr. Lisa Anderson, who led the demographic analysis. "Instead, we found that older students, who may have more complex schedules and greater need for flexible information access, have embraced online news just as enthusiastically."</p>
+                    </div>
+                </article>
+
+                <div class="chart-container">
+                    <div class="chart-title">Online News Consumption by Student Level</div>
+                    <div class="chart-subtitle">Percentage who get campus news online at least 3 days per week</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Graduate Students</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 82%;">41%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Seniors (Age 23-24)</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 76%;">38%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Juniors (Age 21-22)</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 70%;">35%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Sophomores (Age 19-20)</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 64%;">32%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Freshmen (Age 18-19)</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 60%;">30%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">The Generation Gap Narrows—But Not How Expected</h3>
+                    <p class="article-subheadline">Print readership declines across all age groups, complicating the digital transition</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">David Kim</span>, Campus Life Editor</span>
+                        <span>|</span>
+                        <span>December 27, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>The long-standing generation gap in newspaper reading has narrowed over the past decade, in part because of online newspapers, but this is a decidedly mixed blessing for campus media outlets. It reflects the fact that while newspapers continue to draw relatively low numbers of young readers—just 29% of those under age 21—that figure has remained stable since 2019, as some young people have turned to online editions.</p>
+                        <p>However, newspaper readership among older students has fallen significantly over that period. Even when online newspapers are included in the count, readership has declined across virtually all demographic groups.</p>
+                        <p>The data suggests a complex picture: while digital editions have helped stabilize readership among younger students, they have not been sufficient to prevent overall decline as older, traditionally more engaged readers have reduced their news consumption.</p>
+                    </div>
+
+                    <div class="quote-box">
+                        <div class="quote-text">
+                            "My freshman year, I never touched the campus newspaper. Now as a senior, I read the online edition almost every day. My schedule is busier, and I need to stay informed about career fairs, graduate school info sessions, and department news."
+                        </div>
+                        <div class="quote-author">— Marcus Thompson, Senior, Business Administration</div>
+                    </div>
+                </article>
+
+                <div class="two-column">
+                    <div class="info-card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">Why Older Students Read More</div>
+                        <div class="card-text">
+                            <ul class="article-list">
+                                <li>More invested in campus governance and policy decisions</li>
+                                <li>Need information about career services and graduate opportunities</li>
+                                <li>Greater appreciation for in-depth analysis after years of education</li>
+                                <li>More complex schedules make convenient online access essential</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-title">Reaching Younger Students</div>
+                        <div class="card-text">
+                            <ul class="article-list">
+                                <li>Social media integration with shareable content</li>
+                                <li>Mobile-first design optimized for smartphones</li>
+                                <li>Shorter articles and visual storytelling</li>
+                                <li>Content relevant to freshman concerns and interests</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <div class="highlight-title">🔍 Researcher's Note</div>
+                    <div class="highlight-text">
+                        "The assumption that 'digital natives' are automatically more engaged with online news has proven false. What matters more is life stage and information needs. A busy senior preparing for graduation is more motivated to stay informed than a freshman still adjusting to college life, regardless of their comfort with technology." — Dr. Lisa Anderson, Lead Researcher
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+            </div>
+        </div>
+
+        <!-- ==================== PAGE 4: MEDIA COMPETITION (Member 4) ==================== -->
+        <div class="page" id="page4">
+            <div class="newspaper-header">
+                <div class="page-label">Section B • Page 2 • Media Landscape</div>
+                <h1 class="newspaper-title">The Campus Daily</h1>
+                <p class="newspaper-motto">"Truth, Knowledge, and Campus Life"</p>
+                <div class="header-info">
+                    <span>Monday, December 29, 2025</span>
+                    <span class="member-badge">👤 MEMBER 4</span>
+                    <span>Volume XLII, No. 156</span>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="section-header">
+                    <div class="section-category">📻 Media Competition</div>
+                    <h2 class="section-title">Broadcast Media Struggles Continue</h2>
+                    <p class="section-subtitle">Campus radio and TV news face audience decline amid digital shift</p>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Campus Broadcasting Faces Existential Crisis</h3>
+                    <p class="article-subheadline">Radio and TV news audiences slip as students migrate to on-demand platforms</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Olivia Martinez</span>, Media Correspondent</span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>Broadcast news outlets on campus continue to struggle. Over the last two years alone, the audiences for campus radio news, TV broadcasts, and live-streamed video content have all slipped significantly. While The Campus Daily newspaper has found some stability through its digital edition, broadcast media has yet to find a successful formula for the digital age.</p>
+                        <p>Campus Radio WCMP, which once attracted hundreds of listeners during its evening news broadcast, now struggles to maintain an audience of even fifty students during prime time. Similarly, the Student Television Network's nightly news program has seen viewership drop by 40% since 2023.</p>
+                        <p>"The fundamental problem is that broadcast media requires students to tune in at a specific time," explained Tom Harrison, Station Manager of WCMP. "Today's students want information on demand, when it's convenient for them, not when we decide to broadcast it."</p>
+                        <p>Even so, the recent trends in broadcast news consumption are relatively stable when compared to the 2010s, when campus radio and TV were suffering losses of far greater magnitude. Some media analysts suggest that broadcast may have found its floor—a small but dedicated audience that values the live, communal experience of broadcast news.</p>
+                    </div>
+                </article>
+
+                <div class="stats-box">
+                    <div class="stats-header">
+                        <div class="stats-title">📉 Two-Year Audience Decline</div>
+                        <div class="stats-subtitle">Change in regular audience from 2023 to 2025</div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">-28%</div>
+                            <div class="stat-label">Campus Radio News</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">-34%</div>
+                            <div class="stat-label">Local TV News</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">-22%</div>
+                            <div class="stat-label">Live Video Streams</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">-15%</div>
+                            <div class="stat-label">Print Newspaper</div>
+                        </div>
+                    </div>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">What Students Say About Their News Experiences</h3>
+                    <p class="article-subheadline">Different media offer distinct value propositions to campus readers and viewers</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Jennifer Lee</span>, Survey Analysis Team</span>
+                        <span>|</span>
+                        <span>December 27, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>The bottom line for the vast majority of news consumers—regardless of news source—is that it provides information they need to know each day. However, different media offer additional benefits that shape student preferences.</p>
+                        <p>A majority of newspaper readers (57%) say they find the experience "relaxing," compared to fewer regular radio news consumers (44%) and TV news consumers (41%). Internet news users find it even less relaxing, with only 33% describing their online news experience this way.</p>
+                        <p>"I read the paper on Sunday mornings with coffee—it's peaceful," said sophomore Maya Patel. "But when I'm checking news on my phone between classes, it's stressful. I'm constantly refreshing, getting notifications, feeling like I'm missing something."</p>
+                        <p>This suggests that while online news excels at convenience and speed, it may fail to provide the contemplative, immersive experience that many students value when they have time for deeper engagement with campus news and issues.</p>
+                    </div>
+                </article>
+
+                <div class="chart-container">
+                    <div class="chart-title">How "Relaxing" Students Find Different News Sources</div>
+                    <div class="chart-subtitle">Percentage who describe their news consumption as a "relaxing experience"</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Newspaper (Print)</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 95%;">57%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Radio News</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 73%;">44%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">TV/Video News</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 68%;">41%</div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">Online News</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 55%;">33%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div class="info-card">
+                        <div class="card-icon">✅</div>
+                        <div class="card-title">What's Working</div>
+                        <div class="card-text">
+                            Some broadcast outlets have found success by pivoting to podcast formats, creating short video clips for social media, and developing on-demand content libraries. "We're not abandoning live broadcasting, but we're also meeting students where they are," said WCMP's Harrison.
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">⚠️</div>
+                        <div class="card-title">Ongoing Challenges</div>
+                        <div class="card-text">
+                            The economics of broadcast media make it difficult to sustain operations with small audiences. Equipment costs, studio maintenance, and staff time remain constant even as listener and viewership numbers decline. Several campus media outlets are considering consolidation or partnership models.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <div class="quote-text">
+                        "I grew up with YouTube and TikTok. The idea of waiting until 6 PM to hear the news seems absurd to me. Why would I do that when I can get any information I want instantly on my phone?"
+                    </div>
+                    <div class="quote-author">— Chris Johnson, Freshman, Communications Major</div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567
+            </div>
+        </div>
+
+        <!-- ==================== PAGE 5: OPINION & FUTURE (Member 5) ==================== -->
+        <div class="page" id="page5">
+            <div class="newspaper-header">
+                <div class="page-label">Section C • Page 1 • Opinion & Commentary</div>
+                <h1 class="newspaper-title">The Campus Daily</h1>
+                <p class="newspaper-motto">"Truth, Knowledge, and Campus Life"</p>
+                <div class="header-info">
+                    <span>Monday, December 29, 2025</span>
+                    <span class="member-badge">👤 MEMBER 5</span>
+                    <span>Volume XLII, No. 156</span>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="section-header">
+                    <div class="section-category">💭 Editorial Opinion</div>
+                    <h2 class="section-title">The Future of Campus Journalism</h2>
+                    <p class="section-subtitle">What these trends mean for our community and democratic discourse</p>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Editorial: Quality Over Speed in the Digital Age</h3>
+                    <p class="article-subheadline">As news consumption fragments, preserving in-depth journalism becomes critical</p>
+                    <div class="article-meta">
+                        <span>By <span class="byline">The Editorial Board</span></span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>The data presented in this week's special report paints a complex picture of campus news consumption. On one hand, more students than ever have access to campus information through multiple platforms. On the other, the quality and depth of news consumption has declined as students increasingly favor quick headlines over comprehensive reporting.</p>
+                        <p>This editorial board believes that while embracing digital platforms is necessary for survival, campus media must not abandon its core mission: providing thoughtful, thorough, and accurate journalism that serves our community's need to be well-informed.</p>
+                        <p>The fact that students spend an average of just 25 minutes with online news—compared to 44 minutes with print newspapers—should concern anyone who cares about informed civic participation. Complex campus issues cannot be adequately understood through headlines and brief summaries alone.</p>
+                        <p>We call on campus media outlets to resist the temptation to simply chase clicks and optimize for quick engagement. Instead, we must find ways to make substantial, quality journalism accessible and appealing in digital formats. This means investing in multimedia storytelling, interactive features, and mobile-optimized long-form content.</p>
+                        <p>We also call on students to recognize their role in this ecosystem. By choosing to engage with comprehensive news coverage—even when it requires more time and attention—you support the kind of journalism that our democracy depends upon.</p>
+                    </div>
+                </article>
+
+                <div class="highlight-box">
+                    <div class="highlight-title">📢 Our Recommendations</div>
+                    <div class="highlight-text">
+                        <strong>For Students:</strong> Challenge yourself to read at least one in-depth article per week. Set aside 30 minutes for news consumption rather than fragmenting it throughout the day.<br><br>
+                        <strong>For Campus Media:</strong> Invest in training student journalists for multimedia storytelling. Create engaging digital formats that preserve depth and quality.<br><br>
+                        <strong>For Administration:</strong> Provide financial support for campus media outlets during this transition period. Quality journalism requires resources.
+                    </div>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Student Voices: What We Want from Campus Media</h3>
+                    <p class="article-subheadline">Five students share their perspectives on the future of campus news</p>
+                    <div class="article-meta">
+                        <span>Compiled by <span class="byline">Student Affairs Committee</span></span>
+                        <span>|</span>
+                        <span>December 27, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>We asked students from different majors and class years to share their thoughts on how campus media should evolve. Here's what they told us:</p>
+                    </div>
+
+                    <div class="quote-box">
+                        <div class="quote-text">
+                            "I want news I can trust. There's so much misinformation on social media. Campus media needs to be the authoritative source that cuts through the noise with verified facts."
+                        </div>
+                        <div class="quote-author">— Priya Sharma, Sophomore, Political Science</div>
+                    </div>
+
+                    <div class="quote-box">
+                        <div class="quote-text">
+                            "Make it visual. I'm more likely to watch a 2-minute video or look at an infographic than read a 1,000-word article. The information can still be deep, but the format matters."
+                        </div>
+                        <div class="quote-author">— Tyler Washington, Junior, Graphic Design</div>
+                    </div>
+
+                    <div class="quote-box">
+                        <div class="quote-text">
+                            "I actually prefer reading longer articles, but only when I have time. Give me good summaries with links to go deeper when I want to. Not everyone wants the same level of detail."
+                        </div>
+                        <div class="quote-author">— Amanda Chen, Senior, Biology</div>
+                    </div>
+                </article>
+
+                <div class="two-column">
+                    <div class="info-card">
+                        <div class="card-icon">🚀</div>
+                        <div class="card-title">Opportunities Ahead</div>
+                        <div class="card-text">
+                            <ul class="article-list">
+                                <li>Interactive data visualizations make complex information accessible</li>
+                                <li>Mobile apps can deliver personalized news based on student interests</li>
+                                <li>Social media integration can help quality content reach wider audiences</li>
+                                <li>Multimedia storytelling engages students in new ways</li>
+                                <li>Community-building features can foster discussion and engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-title">Challenges to Address</div>
+                        <div class="card-text">
+                            <ul class="article-list">
+                                <li>Maintaining editorial quality while increasing publishing speed</li>
+                                <li>Training student journalists in digital skills</li>
+                                <li>Securing sustainable funding models</li>
+                                <li>Competing with social media for student attention</li>
+                                <li>Preserving long-form journalism in an age of short attention spans</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <article class="article">
+                    <h3 class="article-headline">Looking Forward: A Call to Action</h3>
+                    <div class="article-meta">
+                        <span>By <span class="byline">Emily Richardson</span>, Editor-in-Chief</span>
+                        <span>|</span>
+                        <span>December 28, 2025</span>
+                    </div>
+                    <div class="article-text">
+                        <p>The research presented in this special report demonstrates that we stand at a crossroads. The old model of campus journalism is fading, but the new model is still taking shape. How we navigate this transition will determine whether our campus community has access to the high-quality, in-depth journalism it needs to make informed decisions about our collective future.</p>
+                        <p>At The Campus Daily, we are committed to evolving while staying true to our core values. We will meet students where they are—on their phones, on social media, consuming content in brief moments throughout their busy days. But we will not sacrifice accuracy, fairness, or depth in pursuit of convenience.</p>
+                        <p>We invite every member of our campus community to join us in this mission. Read thoughtfully, share responsibly, engage critically, and support the kind of journalism you want to see in the world.</p>
+                        <p>The future of campus media is being written right now. Let's write it together.</p>
+                    </div>
+                </article>
+
+                <div class="stats-box">
+                    <div class="stats-header">
+                        <div class="stats-title">📊 Final Thoughts: The Big Picture</div>
+                        <div class="stats-subtitle">Key takeaways from our comprehensive study</div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">67min</div>
+                            <div class="stat-label">Total daily news consumption (same as 10 years ago)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Different platforms students use for news</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Mixed</div>
+                            <div class="stat-label">Future outlook for campus journalism</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">You</div>
+                            <div class="stat-label">The most important factor in our success</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                The Campus Daily • Published by Students, For Students • Email: editor@campusdaily.edu • Phone: (555) 123-4567<br>
+                Thank you for reading this special report. Your engagement with quality journalism makes our work possible.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Presentation Guide -->
+    <div class="presentation-guide" onclick="showGuide()">
+        📋 Presentation Guide
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageNum) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById('page' + pageNum).classList.add('active');
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach((btn, index) => {
+                if (index === pageNum - 1) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Presentation Guide
+        function showGuide() {
+            const guide = `
+🎤 PRESENTATION GUIDE (10-15 minutes total)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 MEMBER 1 - Front Page (2-3 minutes)
+📄 Page A1
+• Introduce the newspaper and the special report topic
+• Present main headline: "One-Third of Students Now Get Campus News Online"
+• Explain key statistics from the survey (3,204 students surveyed)
+• Discuss how online news went from 2% to 32% in 10 years
+• Mention the digital edition helping traditional newspaper survive
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 MEMBER 2 - News Analysis (2-3 minutes)
+📄 Page A2
+• Present "The Online News Paradox" - broad but not deep
+• Show data: students spend only 25 minutes online vs 44 minutes with print
+• Explain what students value: speed and convenience over depth
+• Discuss the key finding: total news time hasn't increased (still 67 minutes)
+• Present the comparison chart of different news sources
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 MEMBER 3 - Demographics (2-3 minutes)
+📄 Page B1
+• Present surprising finding: "The Aging of Online News"
+• Show data: older students (23-28) now consume more online news than freshmen
+• Explain why this challenges assumptions about "digital natives"
+• Discuss the generation gap narrowing (but in unexpected ways)
+• Present reasons why older students are more engaged
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 MEMBER 4 - Media Competition (2-3 minutes)
+📄 Page B2
+• Present broadcast media struggles (radio, TV news declining)
+• Show 2-year decline data: radio -28%, TV -34%
+• Discuss the "relaxing experience" data (57% for print vs 33% online)
+• Explain challenges of live broadcasting vs on-demand content
+• Share student quote about generational differences
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 MEMBER 5 - Opinion & Future (3-4 minutes)
+📄 Page C1
+• Present editorial perspective on quality vs speed
+• Discuss recommendations for students, media, and administration
+• Share student voices about what they want from campus media
+• Present opportunities and challenges ahead
+• Conclude with call to action and future outlook
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 TIPS FOR SUCCESS:
+✓ Each member should practice their section beforehand
+✓ Use the navigation buttons to move between pages during presentation
+✓ Reference the charts and statistics visible on each page
+✓ Read or paraphrase the quotes to bring stories to life
+✓ Connect your section to the reference passage about news consumption
+✓ Time yourselves - aim for 10-15 minutes total
+✓ End with the key message: news consumption patterns have fundamentally changed
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎬 RECORDING TIPS:
+• Use screen recording software to capture the newspaper pages
+• Each member can record their section separately and combine later
+• OR do a live presentation with one person navigating while others speak
+• Practice transitions between sections for smooth flow
+            `;
+            
+            alert(guide);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') {
+                const currentPage = document.querySelector('.page.active');
+                const pageNum = parseInt(currentPage.id.replace('page', ''));
+                if (pageNum < 5) showPage(pageNum + 1);
+            } else if (e.key === 'ArrowLeft') {
+                const currentPage = document.querySelector('.page.active');
+                const pageNum = parseInt(currentPage.id.replace('page', ''));
+                if (pageNum > 1) showPage(pageNum - 1);
+            } else if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+
+        // Animate charts on page load
+        window.addEventListener('load', function() {
+            const bars = document.querySelectorAll('.bar-fill');
+            bars.forEach((bar, index) => {
+                bar.style.animationDelay = (index * 0.1) + 's';
+            });
+        });
+    </script>
+</body>
+</html>
